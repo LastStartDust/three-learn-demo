@@ -81,4 +81,3 @@ spotLight.castShadow = true
 // 开始渲染场景和相机
 renderer.render(scene, camera)
 
-

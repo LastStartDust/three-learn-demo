@@ -1,19 +1,8 @@
 /// <reference path="../../node_modules/@types/three/index.d.ts" />
+// 初始化性能监视器
 const stats = initStats()
-stats.begin()
-
-// 创建一个控制器对象
-const controls = new function () {
-  this.rotationSpeed = 0.02
-  this.bouncingSpeed = 0.03
-}
-
-// 创建data.GUI对象
-const gui = new dat.GUI()
-// 设置控制器和立方体旋转范围,在渲染场景的时候,取出这两个值,实现改变gui的数据,影响我们的渲染物体
-gui.add(controls, 'rotationSpeed', 0, 0.5)
-// 球体旋转范围
-gui.add(controls, 'bouncingSpeed', 0, 0.5)
+// 初始化dat.gui
+const controls = initDatGUI()
 
 // 获取canvas画布
 const threeCanvas = document.getElementById('three-canvas')
@@ -108,7 +97,7 @@ function renderScene () {
   sphere.position.y = 2 + (10 * (Math.abs(Math.sin(step))))
 
   renderer.render(scene, camera)
-  stats.end()
+  stats.update()
   requestAnimationFrame(renderScene)
   // 开始渲染场景和相机
 }
@@ -125,8 +114,24 @@ function initStats () {
   return stats
 }
 
+// 初始化dat.gui,获得一个控制器
+function initDatGUI() {
+  // 创建一个控制器对象
+  const controls = new function () {
+    this.rotationSpeed = 0.02
+    this.bouncingSpeed = 0.03
+  }
+
+  // 创建data.GUI对象
+  const gui = new dat.GUI()
+  // 添加控制器到GUI中,设置控制器和立方体旋转范围,在渲染场景的时候,取出这两个值,实现改变gui的数据,影响我们的渲染物体
+  gui.add(controls, 'rotationSpeed', 0, 0.5)
+  // 球体旋转范围
+  gui.add(controls, 'bouncingSpeed', 0, 0.5)
+
+  return controls
+}
+
 renderScene()
-
-
 
 

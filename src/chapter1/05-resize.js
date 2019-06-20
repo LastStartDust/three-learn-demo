@@ -5,23 +5,10 @@ let renderer
 let threeCanvas
 
 function init() {
+  // 初始化性能监视器
   const stats = initStats()
-
-  let cube
-  stats.begin()
-
-  // 创建一个控制器对象
-  const controls = new (function() {
-    this.rotationSpeed = 0.02
-    this.bouncingSpeed = 0.03
-  })()
-
-  // 创建data.GUI对象
-  const gui = new dat.GUI()
-  // 设置控制器和立方体旋转范围,在渲染场景的时候,取出这两个值,实现改变gui的数据,影响我们的渲染物体
-  gui.add(controls, "rotationSpeed", 0, 0.5)
-  // 球体旋转范围
-  gui.add(controls, "bouncingSpeed", 0, 0.5)
+  // 初始化dat.gui
+  const controls = initDatGUI()
 
   // 获取canvas画布
   threeCanvas = document.getElementById("three-canvas")
@@ -73,7 +60,7 @@ function init() {
     wireframe: true
   })
 
-  cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
+  const cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
   cube.position.x = -4
   cube.position.y = 3
   cube.position.z = 0
@@ -124,23 +111,41 @@ function init() {
     step += controls.bouncingSpeed
     sphere.position.x = 20 + 10 * Math.cos(step)
     sphere.position.y = 2 + 10 * Math.abs(Math.sin(step))
-    
+
     renderer.render(scene, camera)
     stats.end()
     requestAnimationFrame(renderScene)
     // 开始渲染场景和相机
   }
-  
+
   // 初始化帧数显示器
   function initStats() {
     const stats = new Stats()
     stats.setMode(0) // 显示FPS
-    
+
     stats.domElement.style.position = "absolute"
     stats.domElement.style.left = "0px"
     stats.domElement.style.top = "0px"
     document.getElementById("stats-output").appendChild(stats.domElement)
     return stats
+  }
+
+  // 初始化dat.gui,获得一个控制器
+  function initDatGUI() {
+    // 创建一个控制器对象
+    const controls = new (function() {
+      this.rotationSpeed = 0.02
+      this.bouncingSpeed = 0.03
+    })()
+
+    // 创建data.GUI对象
+    const gui = new dat.GUI()
+    // 添加控制器到GUI中,设置控制器和立方体旋转范围,在渲染场景的时候,取出这两个值,实现改变gui的数据,影响我们的渲染物体
+    gui.add(controls, "rotationSpeed", 0, 0.5)
+    // 球体旋转范围
+    gui.add(controls, "bouncingSpeed", 0, 0.5)
+
+    return controls
   }
 
   renderScene()

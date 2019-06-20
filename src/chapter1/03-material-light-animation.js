@@ -1,7 +1,5 @@
 /// <reference path="../../node_modules/@types/three/index.d.ts" />
 const stats = initStats()
-stats.begin()
-
 
 // 获取canvas画布
 const threeCanvas = document.getElementById('three-canvas')
@@ -95,7 +93,8 @@ function renderScene () {
   sphere.position.y = 2 + (10 * (Math.abs(Math.sin(step))))
 
   renderer.render(scene, camera)
-  stats.end()
+  // 刷新时间
+  stats.update()
   requestAnimationFrame(renderScene)
   // 开始渲染场景和相机
 }
