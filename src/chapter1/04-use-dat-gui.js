@@ -54,7 +54,7 @@ cube.position.z = 0
 
 scene.add(cube)
 
-// 创建一个球体 
+// 创建一个球体
 const sphereGeometry = new THREE.SphereGeometry(4, 20, 20)
 const sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xFFA500, wireframe: true })
 const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial)
