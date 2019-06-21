@@ -13,7 +13,7 @@ let height
 // 初始性能监视器
 function initStats() {
   stats = new Stats()
-  stats.setMode(0) // 显示FPS
+  // stats.setMode(0) // 显示FPS
 
   stats.domElement.style.position = "absolute"
   stats.domElement.style.left = "0px"
