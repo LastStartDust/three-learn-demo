@@ -52,15 +52,16 @@ function initLight () {
 
 // 初始化Tween引擎
 function initTween() {
+  // 传入需要改变的对象: 这里我们传入cube的position属性, 
   new TWEEN.Tween( cube.position)
-    .to( { x: 500 }, 3000 )
-    .repeat( Infinity ).start();
+    .to( { x: 500 }, 3000 ) // 动画结束时移动到x轴的500位置, 动画耗时3000ms
+    .repeat( Infinity ).start(); // repeat 重复次数 start开始动画
 }
 
 function render () {
   renderer.render(scene, camera)
   requestAnimationFrame(render)
-  TWEEN.update();
+  TWEEN.update(); // 更新动画,让物体移动
 }
 
 
