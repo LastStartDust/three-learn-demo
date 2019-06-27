@@ -17,14 +17,12 @@ function initScene () {
 function initCamera () {
   camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 10000)
   // 设置相机位置,将相机指向场景中心
-  // camera.position.x = 1000
-  camera.position.y = 300
+  camera.position.x = 100
+  camera.position.y = 100
+  camera.position.z = 300
   // camera.position.z = 1000
   camera.lookAt(0, 0, 0)
   scene.add(camera)
-
-  var helper = new THREE.CameraHelper( camera );
-  scene.add( helper );
 }
 
 // 初始化渲染器
@@ -38,27 +36,31 @@ function initRenderer () {
 }
 
 function initLight() {
-  const light = new THREE.AmbientLight(0xffffff, 1, 1000)
-  light.position.set(0, 0, 0)
+  const light = new THREE.SpotLight(0xffffff)
+  light.position.set(0, 100, 100)
   scene.add(light)
+
+  const light2 = new THREE.SpotLight(0xffffff)
+  light2.position.set(0, 100, -100)
+  scene.add(light2)
+
+  const axes = new THREE.AxesHelper(100)
+  scene.add(axes)
 }
 
-// let cube
-var mixers = [];
+let gltf2
 function initObject () {
 
-  const loader = new THREE.FBXLoader()
-
+  const loader = new THREE.GLTFLoader()
+  const url = "./blue_rose_sword/scene.gltf"
   loader.load(
-    "./blue-rose-sword/source/maya2sketchfab.fbx",
+    url,
     function(gltf) {
-      console.log(gltf)
-      gltf.traverse( function ( child ) {
-        if ( child.isMesh ) {
-          child.castShadow = true;
-          child.receiveShadow = true;
-        }
-      });
+      gltf2 = gltf
+      gltf.scene.scale.set(0.1, 0.1, 0.1)
+      gltf.scene.position.set(-18, 18, 0)
+      gltf2.scene.rotation.y = Math.PI / 5.6
+      gltf2.scene.rotation.x = -Math.PI / 2
       scene.add( gltf.scene);
     },
     undefined,
@@ -66,12 +68,31 @@ function initObject () {
       console.error(error)
     }
   )
+
+  // 平面
+  const planeGemo = new THREE.PlaneGeometry(100, 180)
+  const planeMaterial = new THREE.MeshLambertMaterial({
+    color: 0xffffff
+  })
+  const plane = new THREE.Mesh(planeGemo, planeMaterial)
+  plane.rotation.x = -Math.PI / 2
+  plane.position.y = -5
+  scene.add(plane)
+}
+
+// 轨道控制
+let controls
+function initOrbiControls () {
+  controls = new THREE.OrbitControls( camera, renderer.domElement )
 }
 
 // 渲染动画
 function animate () {
-  // cube.rotation.y += 0.01
-  // cube.rotation.z += 0.01
+  // 更新控制器
+  controls.update()
+  if (gltf2) {
+    // gltf2.scene.rotation.z += 0.1
+  }
   renderer.render(scene, camera)
   requestAnimationFrame(animate)
 }
@@ -82,6 +103,7 @@ function startThree () {
   initObject()
   initLight()
   initRenderer()
+  initOrbiControls()
   animate()
 }
 

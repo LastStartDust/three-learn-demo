@@ -1,0 +1,275 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 38529,
+      "max": [
+        212.32872009277344,
+        92.993339538574219,
+        702.389404296875
+      ],
+      "min": [
+        -209.02841186523438,
+        -0.44059637188911438,
+        -628.5389404296875
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 462348,
+      "componentType": 5126,
+      "count": 38529,
+      "max": [
+        0.99999779462814331,
+        0.99999463558197021,
+        0.99976944923400879
+      ],
+      "min": [
+        -0.99999505281448364,
+        -0.99999886751174927,
+        -0.99999791383743286
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 38529,
+      "max": [
+        0.9999963641166687,
+        0.99999064207077026,
+        0.99996489286422729,
+        1
+      ],
+      "min": [
+        -0.99999994039535522,
+        -0.99996238946914673,
+        -0.99999606609344482,
+        -1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 38529,
+      "max": [
+        1,
+        1
+      ],
+      "min": [
+        0,
+        0
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 197184,
+      "max": [
+        38528
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "K-Li (https://sketchfab.com/K-Li)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/models/4354aefc64df4b04b1c4adced337b975",
+      "title": "Blue Rose Sword"
+    },
+    "generator": "Sketchfab-3.45.3",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 788736,
+      "byteOffset": 0,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 308232,
+      "byteOffset": 788736,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 924696,
+      "byteOffset": 1096968,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 616464,
+      "byteOffset": 2021664,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 2638128,
+      "uri": "scene.bin"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "name": "lambert1",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.014990141943627369,
+          0.38790472035562862,
+          0.45041110789767452,
+          1
+        ],
+        "metallicFactor": 0.17768673779999999,
+        "roughnessFactor": 0.031345274399999998
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "BlueRose1:Blue2_lambert1_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        -0.84493708610534668,
+        0.53486567735671997,
+        0,
+        0,
+        -0.53486567735671997,
+        -0.84493708610534668,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        -172.34574890136719,
+        -605.8671875,
+        0,
+        1
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "0f8178ff219f4521812c15f2592fd843.fbx"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        5
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        290.9912109375,
+        1
+      ],
+      "name": "BlueRose1:Blue2"
+    },
+    {
+      "mesh": 0,
+      "name": "BlueRose1:Blue2_lambert1_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
+

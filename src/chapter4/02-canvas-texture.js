@@ -55,8 +55,16 @@ function initObject () {
   scene.add(cube)
 }
 
+// 轨道控制
+let controls
+function initOrbiControls () {
+  controls = new THREE.OrbitControls( camera, renderer.domElement )
+}
+
 // 渲染动画
 function animate () {
+  // 更新控制器
+  controls.update()
   texture.needsUpdate = true
   renderer.render(scene, camera)
   cube.rotation.y += 0.01
@@ -71,6 +79,7 @@ function startThree () {
   initObject()
   initLight()
   initRenderer()
+  initOrbiControls()
   animate()
 }
 
