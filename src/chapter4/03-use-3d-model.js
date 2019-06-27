@@ -48,7 +48,6 @@ function initLight() {
   scene.add(axes)
 }
 
-let gltf2
 function initObject () {
 
   const loader = new THREE.GLTFLoader()
@@ -56,11 +55,10 @@ function initObject () {
   loader.load(
     url,
     function(gltf) {
-      gltf2 = gltf
       gltf.scene.scale.set(0.1, 0.1, 0.1)
       gltf.scene.position.set(-18, 18, 0)
-      gltf2.scene.rotation.y = Math.PI / 5.6
-      gltf2.scene.rotation.x = -Math.PI / 2
+      gltf.scene.rotation.y = Math.PI / 5.6
+      gltf.scene.rotation.x = -Math.PI / 2
       scene.add( gltf.scene);
     },
     undefined,
@@ -90,9 +88,6 @@ function initOrbiControls () {
 function animate () {
   // 更新控制器
   controls.update()
-  if (gltf2) {
-    // gltf2.scene.rotation.z += 0.1
-  }
   renderer.render(scene, camera)
   requestAnimationFrame(animate)
 }
